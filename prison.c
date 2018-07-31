@@ -73,3 +73,64 @@ int main(void){
     printf("%s",s1);
     return 0;
 }
+
+
+//////////////////////////////////////////命令行版,ide命令行写abeg gh就可以了，argv[0]是文件地址，argv[1]，argv[2]分别是第1个第二个参数
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+int main(int argc, char ** argv){
+    char* s1=(char*)malloc(sizeof(char)*21);
+    char* s2=(char*)malloc(sizeof(char)*11);
+    // scanf("%s",s1);
+    //  scanf("%s",s2);
+  //  printf("arghv%s",argv[1]);
+    s1=argv[1];
+    s2=argv[2];
+   // printf("\n s1%s",s1);
+   // printf("\n s2%s",s2);
+    if(s1==NULL){
+        s1=s2;
+        return 0;
+    }
+    int len1=strlen(s1);
+    int len2=strlen(s2);
+    for(int i=0;i<len2;i++){
+        for(int j=0;j<=len1;j++){
+            if(j==len1){
+                s1[len1++]=s2[i];
+                //  printf("\nend%s",s1);
+                break;
+            }
+            if(s2[i]==s1[j]){
+                int k=j;
+                while(k<len1) {
+
+                    s1[k] = s1[k+1];
+                    //  printf("%c", s1[k]);
+                    k++;
+                }
+                len1-=1;
+                //  printf("\nequal%s",s1);
+                break;
+            }
+            else if(s2[i]<s1[j]){
+                int k=len1;
+                while(j<k) {
+
+                    s1[k] = s1[k - 1];
+
+                    k--;
+                }
+                len1+=1;
+                s1[j]=s2[i];
+                //   printf("\nless%s", s1);
+                break;
+            }
+
+        }
+    }
+    s1[len1]='\0';
+    printf("\ns1%s",s1);
+    return 0;
+}
