@@ -13,6 +13,7 @@ using namespace std;
 int getdown(int n,int m){
 
     int res=0;
+    ////////////////  vector<vector<bool>> v(n,vector<bool>(m,0));这一句就代替了下面两个循环
     vector<vector<bool>> v(n);
     for(int i=0;i<n;i++){
         v[i].resize(m);
