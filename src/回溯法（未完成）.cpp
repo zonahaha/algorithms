@@ -6,9 +6,13 @@
 
 using namespace std;
 
-int
-hasPathCore(const char *matrix, int row, int rows, int col, int cols, const char *str, int &pathLength, bool *visited) {
+bool hasPathCore(const char *matrix, int row, int rows, int col, int cols, const char *str, int &pathLength, bool *visited) {
     bool haspath = false;
+    if(str[pathLength]=='\0'){
+       // cout<<"end "<<endl;
+        return true;
+    }
+//cout<<"str[pathlength]= "<<str[pathLength]<<" length= "<<pathLength<<endl;
     if (row >= 0 && row < rows && col >= 0 && col < cols
         && matrix[row * cols + col] == str[pathLength]
         && !visited[row * cols + col]) {
@@ -22,6 +26,7 @@ hasPathCore(const char *matrix, int row, int rows, int col, int cols, const char
             --pathLength;
             visited[row * cols + col] = false;
         }
+       // else cout<<"happath==true char: "<<matrix[row*cols+row]<<endl;
 
     }
     return haspath;
