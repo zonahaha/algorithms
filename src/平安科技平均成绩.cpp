@@ -11,6 +11,7 @@ vector<string> split(string &s, char token) {//重点是这里的字符串分割
     vector<string> v;
     string str;
     while (getline(iss, str, token))v.push_back(str);
+    //while (iss>>str)v.push_back(str);这样也是可以的
     return v;
 }
 
